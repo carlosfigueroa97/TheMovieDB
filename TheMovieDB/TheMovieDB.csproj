@@ -23,5 +23,25 @@
     <None Remove="Refractored.MvvmHelpers" />
     <None Remove="System.Net.Http" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Views\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Models\" />
+    <None Remove="Utils\" />
+    <None Remove="Tools\" />
+    <None Remove="Localization\" />
+    <None Remove="Services\" />
+    <None Remove="Styles\" />
+    <None Remove="Utils\ServiceLocator\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Tools\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Services\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Utils\ServiceLocator\" />
   </ItemGroup>
 </Project>
