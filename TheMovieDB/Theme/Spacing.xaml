@@ -10,4 +10,6 @@
 
     <!-- Custom -->
     <Thickness x:Key="SmallPadding">10</Thickness>
+    <Thickness x:Key="NormalPadding">20</Thickness>
+    <Thickness x:Key="NoPadding">0</Thickness>
 </ResourceDictionary>

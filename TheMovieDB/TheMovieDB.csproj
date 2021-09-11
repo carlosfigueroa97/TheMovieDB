@@ -62,6 +62,7 @@
     <None Remove="Tools\Converters\" />
     <None Remove="Renderers\" />
     <None Remove="Controls\" />
+    <None Remove="Items\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -103,6 +104,7 @@
     <Folder Include="Tools\Converters\" />
     <Folder Include="Renderers\" />
     <Folder Include="Controls\" />
+    <Folder Include="Items\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">

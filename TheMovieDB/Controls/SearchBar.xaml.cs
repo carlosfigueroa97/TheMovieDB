@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TheMovieDB.Controls
 {
@@ -12,7 +10,8 @@ namespace TheMovieDB.Controls
             propertyName: nameof(Text),
             returnType: typeof(string),
             declaringType: typeof(string),
-            defaultValue: string.Empty,
+            defaultValue: null,
+            defaultBindingMode: BindingMode.TwoWay,
             propertyChanged: OnText);
 
         public string Text
@@ -25,8 +24,7 @@ namespace TheMovieDB.Controls
             propertyName: nameof(ReturnCommand),
             returnType: typeof(Command),
             declaringType: typeof(Command),
-            defaultValue: null,
-            propertyChanged: OnReturnCommand);
+            defaultValue: null);
 
         public Command ReturnCommand
         {
@@ -38,12 +36,11 @@ namespace TheMovieDB.Controls
             propertyName: nameof(ReturnCommandParameter),
             returnType: typeof(object),
             declaringType: typeof(object),
-            defaultValue: null,
-            propertyChanged: OnReturnCommandParameter);
+            defaultValue: null);
 
         public object ReturnCommandParameter
         {
-            get => (object)GetValue(ReturnCommandParameterProperty);
+            get => GetValue(ReturnCommandParameterProperty);
             set => SetValue(ReturnCommandParameterProperty, value);
         }
 
@@ -63,21 +60,13 @@ namespace TheMovieDB.Controls
         private static void OnText(BindableObject bindable, object oldVal, object newVal)
         {
             var newBindable = bindable as SearchBar;
-            newBindable.search.Text = newVal.ToString();
+            newBindable.search.Text = newVal?.ToString();
         }
 
-        private static void OnReturnCommand(BindableObject bindable, object oldVal, object newVal)
+        void search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var newBindable = bindable as SearchBar;
-            newBindable.search.ReturnCommand = (Command)newVal;
+            ReturnCommand.Execute(search.Text);
         }
-
-        private static void OnReturnCommandParameter(BindableObject bindable, object oldVal, object newVal)
-        {
-            var newBindable = bindable as SearchBar;
-            newBindable.search.ReturnCommandParameter = newVal;
-        }
-
         #endregion
     }
 }

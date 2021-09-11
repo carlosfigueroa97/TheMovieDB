@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace TheMovieDB.ViewModels.Home
         private readonly INavigationService _navigationService;
 
         private string _baseUrl = string.Empty;
-        private string _searchText;
+
+        private bool _lookingFor;
 
         private ResultWrapper _topRateSelected;
         private ResultWrapper _upCommingSelected;
@@ -40,12 +42,9 @@ namespace TheMovieDB.ViewModels.Home
         public ObservableCollection<ResultWrapper> TopRatedList { get; set; }
         public ObservableCollection<ResultWrapper> UpCommingList { get; set; }
         public ObservableCollection<ResultWrapper> PopularList { get; set; }
-
-        public string SearchText
-        {
-            get => _searchText;
-            set => SetProperty(ref _searchText, value);
-        }
+        public ObservableCollection<ResultWrapper> TopRatedListCopy { get; set; }
+        public ObservableCollection<ResultWrapper> UpCommingListCopy { get; set; }
+        public ObservableCollection<ResultWrapper> PopularListCopy { get; set; }
 
         public ResultWrapper TopRateSelected
         {
@@ -79,11 +78,103 @@ namespace TheMovieDB.ViewModels.Home
             _navigationService = navigationService;
 
             InitCommands();
+
+            TopRatedList = new ObservableCollection<ResultWrapper>();
+            UpCommingList = new ObservableCollection<ResultWrapper>();
+            PopularList = new ObservableCollection<ResultWrapper>();
         }
 
         #endregion
 
         #region Command Methods
+
+        private void ExecuteSearchCommand(string searchText)
+        {
+            if (_lookingFor)
+            {
+                return;
+            }
+
+            _lookingFor = true;
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                TopRatedList = TopRatedListCopy;
+                UpCommingList = UpCommingListCopy;
+                PopularList = PopularListCopy;
+            }
+            else
+            {
+                if(searchText.Length > 2)
+                {
+                    var topRatedFiltered = TopRatedListCopy
+                                                .Where(x =>
+                                                        x.Result.Title
+                                                        .ToLower()
+                                                        .Contains(searchText.ToLower()))
+                                                .ToList();
+                    TopRatedList = new ObservableCollection<ResultWrapper>(topRatedFiltered);
+
+                    var upCommingFiltered = UpCommingListCopy
+                                                .Where(x =>
+                                                        x.Result.Title
+                                                        .ToLower()
+                                                        .Contains(searchText.ToLower()))
+                                                .ToList();
+                    UpCommingList = new ObservableCollection<ResultWrapper>(upCommingFiltered);
+
+                    var popularFiltered = PopularListCopy
+                                                .Where(x =>
+                                                        x.Result.Title
+                                                        .ToLower()
+                                                        .Contains(searchText.ToLower()))
+                                                .ToList();
+                    PopularList = new ObservableCollection<ResultWrapper>(popularFiltered);
+                }
+            }
+
+            OnPropertyChanged(nameof(TopRatedList));
+            OnPropertyChanged(nameof(UpCommingList));
+            OnPropertyChanged(nameof(PopularList));
+
+            _lookingFor = false;
+        }
+
+        private async Task ExecutePopularSelectedCommand()
+        {
+            if (PopularSelected is null)
+            {
+                return;
+            }
+
+            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(PopularSelected);
+
+            PopularSelected = null;
+        }
+
+        private async Task ExecuteUpCommingSelectedCommand()
+        {
+            if (UpCommingSelected is null)
+            {
+                return;
+            }
+
+            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(UpCommingSelected);
+
+            UpCommingSelected = null;
+        }
+
+        private async Task ExecuteTopRatedSelectedCommand()
+        {
+            if (TopRateSelected is null)
+            {
+                return;
+            }
+
+            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(TopRateSelected);
+
+            TopRateSelected = null;
+        }
 
         private async Task ExecuteGetDataCommand()
         {
@@ -98,7 +189,7 @@ namespace TheMovieDB.ViewModels.Home
 
                 _baseUrl = await GetConfigurationAsync();
 
-                Task[] tasks = new Task[]
+                List<Task> tasks = new List<Task>
                 {
                     GetTopRatedAsync(),
                     GetUpCommingAsync(),
@@ -128,42 +219,7 @@ namespace TheMovieDB.ViewModels.Home
             TopRatedSelectedCommand = new Command(async () => await ExecuteTopRatedSelectedCommand());
             UpCommingSelectedCommand = new Command(async () => await ExecuteUpCommingSelectedCommand());
             PopularSelectedCommand = new Command(async () => await ExecutePopularSelectedCommand());
-            SearchCommand = new Command(async () => await ExecuteSearchCommand());
-        }
-
-        private Task ExecuteSearchCommand()
-        {
-            throw new NotImplementedException();
-        }
-
-        private async Task ExecutePopularSelectedCommand()
-        {
-            if(PopularSelected is null)
-            {
-                return;
-            }
-
-            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(PopularSelected);
-        }
-
-        private async Task ExecuteUpCommingSelectedCommand()
-        {
-            if (UpCommingSelected is null)
-            {
-                return;
-            }
-
-            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(UpCommingSelected);
-        }
-
-        private async Task ExecuteTopRatedSelectedCommand()
-        {
-            if (TopRateSelected is null)
-            {
-                return;
-            }
-
-            await _navigationService.NavigateTo<MovieDetailPageViewModel, ResultWrapper>(TopRateSelected);
+            SearchCommand = new Command<string>((searchText) => ExecuteSearchCommand(searchText));
         }
 
         private async Task<string> GetConfigurationAsync()
@@ -188,16 +244,18 @@ namespace TheMovieDB.ViewModels.Home
                 || (bool)!response?.Results?.Any())
             {
                 TopRatedList = new ObservableCollection<ResultWrapper>();
+                TopRatedListCopy = new ObservableCollection<ResultWrapper>();
             }
             else
             {
                 var topRatedList = response.Results.Skip(10);
                 var list = topRatedList.Select(x => new ResultWrapper
                 {
-                    Model = x,
-                    Image = $"_baseUrl{x.BackdropPath}"
+                    Result = x,
+                    Image = $"{_baseUrl}{x.BackdropPath}"
                 });
                 TopRatedList = new ObservableCollection<ResultWrapper>(list);
+                TopRatedListCopy = new ObservableCollection<ResultWrapper>(list);
             }
 
             OnPropertyChanged(nameof(TopRatedList));
@@ -207,20 +265,21 @@ namespace TheMovieDB.ViewModels.Home
         {
             var response = await _movieService.GetUpCommingMoviesAsync();
 
-            if (response is null
-                || (bool)!response?.Results?.Any())
+            if (response is null || !response.Results.Any())
             {
                 UpCommingList = new ObservableCollection<ResultWrapper>();
+                UpCommingListCopy = new ObservableCollection<ResultWrapper>();
             }
             else
             {
                 var upCommmingList = response.Results.Skip(10);
                 var list = upCommmingList.Select(x => new ResultWrapper
                 {
-                    Model = x,
-                    Image = $"_baseUrl{x.BackdropPath}"
+                    Result = x,
+                    Image = $"{_baseUrl}{x.BackdropPath}"
                 });
                 UpCommingList = new ObservableCollection<ResultWrapper>(list);
+                UpCommingListCopy = new ObservableCollection<ResultWrapper>(list);
             }
 
             OnPropertyChanged(nameof(UpCommingList));
@@ -234,16 +293,18 @@ namespace TheMovieDB.ViewModels.Home
                 || (bool)!response?.Results?.Any())
             {
                 PopularList = new ObservableCollection<ResultWrapper>();
+                PopularListCopy = new ObservableCollection<ResultWrapper>();
             }
             else
             {
                 var popularList = response.Results.Skip(10);
                 var list = popularList.Select(x => new ResultWrapper
                 {
-                    Model = x,
-                    Image = $"_baseUrl{x.BackdropPath}"
+                    Result = x,
+                    Image = $"{_baseUrl}{x.BackdropPath}"
                 });
                 PopularList = new ObservableCollection<ResultWrapper>(list);
+                PopularListCopy = new ObservableCollection<ResultWrapper>(list);
             }
 
             OnPropertyChanged(nameof(PopularList));

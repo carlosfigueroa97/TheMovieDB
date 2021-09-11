@@ -76,4 +76,14 @@
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontSize" Value="{StaticResource LongSize}"/>
     </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="YellowFontAwesomeFreeSolid">
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFreeSolid}"/>
+        <Setter Property="TextColor" Value="{StaticResource RatingColor}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource LongSize}"/>
+    </Style>
 </ResourceDictionary>

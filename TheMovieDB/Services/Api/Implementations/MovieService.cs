@@ -38,7 +38,7 @@ namespace TheMovieDB.Services.Api.Implementations
         {
             try
             {
-                var response = await _apiClient.GetAsync($"{ConstantsGlobal.ConfigurationUrl}?api_key={ConstantsGlobal.ApiKey}", cancellationToken);
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.ConfigurationUrl}api_key={ConstantsGlobal.ApiKey}", cancellationToken);
 
                 if (response is null)
                 {
@@ -68,8 +68,8 @@ namespace TheMovieDB.Services.Api.Implementations
         {
             try
             {
-                var response = await _apiClient.GetAsync($"{ConstantsGlobal.PopularUrl}?api_key={ConstantsGlobal.ApiKey}" +
-                    $"language={movieParams.Language}&page={movieParams.Page}", cancellationToken);
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.PopularUrl}api_key={ConstantsGlobal.ApiKey}&" +
+                    $"language={movieParams?.Language}&page={movieParams?.Page}", cancellationToken);
 
                 if (response is null)
                 {
@@ -99,8 +99,8 @@ namespace TheMovieDB.Services.Api.Implementations
         {
             try
             {
-                var response = await _apiClient.GetAsync($"{ConstantsGlobal.TopRatedUrl}?api_key={ConstantsGlobal.ApiKey}" +
-                    $"language={movieParams.Language}&page={movieParams.Page}", cancellationToken);
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.TopRatedUrl}api_key={ConstantsGlobal.ApiKey}&" +
+                    $"language={movieParams?.Language}&page={movieParams?.Page}", cancellationToken);
 
                 if (response is null)
                 {
@@ -130,8 +130,8 @@ namespace TheMovieDB.Services.Api.Implementations
         {
             try
             {
-                var response = await _apiClient.GetAsync($"{ConstantsGlobal.UpCommingUrl}?api_key={ConstantsGlobal.ApiKey}" +
-                    $"language={movieParams.Language}&page={movieParams.Page}", cancellationToken);
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.UpCommingUrl}api_key={ConstantsGlobal.ApiKey}&" +
+                    $"language={movieParams?.Language}&page={movieParams?.Page}", cancellationToken);
 
                 if (response is null)
                 {

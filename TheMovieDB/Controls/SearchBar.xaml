@@ -35,7 +35,9 @@
                 BackgroundColor="Transparent"
                 TextColor="{StaticResource LightGrayTextColor}"
                 Placeholder="{Static local:AppResources.Search}"
-                PlaceholderColor="{StaticResource LightGrayTextColor}"/>
+                PlaceholderColor="{StaticResource LightGrayTextColor}"
+                IsTextPredictionEnabled="False"
+                TextChanged="search_TextChanged"/>
         </Grid>
     </Frame>
 </ContentView>

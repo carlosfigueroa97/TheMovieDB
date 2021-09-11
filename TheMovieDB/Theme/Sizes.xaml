@@ -5,4 +5,5 @@
     x:Class="TheMovieDB.Theme.Sizes">
     <!-- Double -->
     <x:Double x:Key="FrameHeightRequest">25</x:Double>
+    <x:Double x:Key="GridWidthRequest">150</x:Double>
 </ResourceDictionary>

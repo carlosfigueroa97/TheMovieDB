@@ -4,7 +4,7 @@ namespace TheMovieDB.Models.App
 {
     public class ResultWrapper
     {
-        public Result Model { get; set; }
+        public Result Result { get; set; }
 
         public string Image { get; set; }
     }

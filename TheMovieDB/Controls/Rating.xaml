@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fn="clr-namespace:TheMovieDB.Tools.Helpers"
+    x:Class="TheMovieDB.Controls.Rating">
+    <ContentView.Content>
+        <StackLayout
+            Orientation="Horizontal">
+            <Label
+                x:Name="starOne"
+                Style="{StaticResource YellowFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.StarIcon}"/>
+            <Label
+                x:Name="starTwo"
+                Style="{StaticResource YellowFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.StarIcon}"/>
+            <Label
+                x:Name="starThree"
+                Style="{StaticResource YellowFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.StarIcon}"/>
+            <Label
+                x:Name="starFourth"
+                Style="{StaticResource YellowFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.StarIcon}"/>
+            <Label
+                x:Name="starFive"
+                Style="{StaticResource YellowFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.StarIcon}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

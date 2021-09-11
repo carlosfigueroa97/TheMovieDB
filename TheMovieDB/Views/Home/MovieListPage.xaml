@@ -3,8 +3,116 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:TheMovieDB.Controls"
-    x:Class="TheMovieDB.Views.Home.MovieListPage">
+    xmlns:local="clr-namespace:TheMovieDB.Localization"
+    xmlns:items="clr-namespace:TheMovieDB.Items"
+    x:Class="TheMovieDB.Views.Home.MovieListPage"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <controls:SearchBar/>
+        <Grid
+            RowDefinitions="200, *">
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="{StaticResource AndroidTopSafeArea}"/>
+                    <On Platform="Android" Value="{StaticResource iOSTopSafeArea}"/>
+                </OnPlatform>
+            </Grid.Margin>
+            <Grid
+                Grid.Row="0"
+                RowDefinitions="Auto, *"
+                Padding="60,60,40,0">
+                <Label
+                    Grid.Row="0"
+                    Style="{StaticResource TitleLabel}"
+                    Text="{Static local:AppResources.WelcomeMessage}"/>
+                <controls:SearchBar
+                    Grid.Row="1"
+                    ReturnCommand="{Binding SearchCommand}"
+                    ReturnCommandParameter="{Binding .}"/>
+            </Grid>
+            <Frame
+                Grid.Row="1"
+                HasShadow="False"
+                CornerRadius="20"
+                BackgroundColor="{StaticResource SecondBackgroundColor}"
+                Padding="{StaticResource NormalPadding}">
+                <Grid>
+                    <ScrollView
+                        IsVisible="{Binding IsBusy,
+                                        Converter={StaticResource InverseBoolConverter}}"
+                        Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+                        <Grid
+                            RowDefinitions="20, 250, 20, 250, 20, 250">
+                            <Label
+                                Grid.Row="0"
+                                Style="{StaticResource SubtitleLabel}"
+                                Text="{Static local:AppResources.RecommendedForYou}"/>
+                            <CollectionView
+                                Grid.Row="1"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding PopularList}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding PopularSelected}"
+                                SelectionChangedCommand="{Binding PopularSelectedCommand}"
+                                HorizontalScrollBarVisibility="Never">
+                                <CollectionView.EmptyView>
+                                    <items:NoFound/>
+                                </CollectionView.EmptyView>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <items:ItemMovieCollectionView/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label
+                                Grid.Row="2"
+                                Style="{StaticResource SubtitleLabel}"
+                                Text="{Static local:AppResources.TopRated}"/>
+                            <CollectionView
+                                Grid.Row="3"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding TopRatedList}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding TopRateSelected}"
+                                SelectionChangedCommand="{Binding TopRatedSelectedCommand}"
+                                HorizontalScrollBarVisibility="Never">
+                                <CollectionView.EmptyView>
+                                    <items:NoFound/>
+                                </CollectionView.EmptyView>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <items:ItemMovieCollectionView/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label
+                                Grid.Row="4"
+                                Style="{StaticResource SubtitleLabel}"
+                                Text="{Static local:AppResources.CommingSoon}"/>
+                            <CollectionView
+                                Grid.Row="5"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding UpCommingList}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding UpCommingSelected}"
+                                SelectionChangedCommand="{Binding UpCommingSelectedCommand}"
+                                HorizontalScrollBarVisibility="Never">
+                                <CollectionView.EmptyView>
+                                    <items:NoFound/>
+                                </CollectionView.EmptyView>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <items:ItemMovieCollectionView/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </ScrollView>
+                    <ActivityIndicator
+                        Style="{StaticResource BaseActivityIndicator}"
+                        IsVisible="{Binding IsBusy}"/>
+                </Grid>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
