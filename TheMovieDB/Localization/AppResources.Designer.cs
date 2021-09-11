@@ -58,5 +58,11 @@ namespace TheMovieDB.Localization {
                 return ResourceManager.GetString("UnexpectedExceptionOcurred", resourceCulture);
             }
         }
+        
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
     }
 }

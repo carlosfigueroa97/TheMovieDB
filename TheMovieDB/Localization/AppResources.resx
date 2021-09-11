@@ -18,4 +18,7 @@
 	<data name="UnexpectedExceptionOcurred" xml:space="preserve">
 		<value>An unexpected exception occurred</value>
 	</data>
+	<data name="Search" xml:space="preserve">
+		<value>Search</value>
+	</data>
 </root>
