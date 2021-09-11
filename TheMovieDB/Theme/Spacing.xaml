@@ -7,4 +7,7 @@
     <Thickness x:Key="iOSSafeArea">20,50,20,0</Thickness>
     <Thickness x:Key="AndroidTopSafeArea">0,15</Thickness>
     <Thickness x:Key="iOSTopSafeArea">0,50</Thickness>
+
+    <!-- Custom -->
+    <Thickness x:Key="SmallPadding">10</Thickness>
 </ResourceDictionary>

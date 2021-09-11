@@ -2,8 +2,9 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:TheMovieDB.Controls"
     x:Class="TheMovieDB.Views.Home.MovieListPage">
     <ContentPage.Content>
-        
+        <controls:SearchBar/>
     </ContentPage.Content>
 </ContentPage>

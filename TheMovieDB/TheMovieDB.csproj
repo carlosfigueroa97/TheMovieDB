@@ -30,7 +30,6 @@
     <None Remove="Tools\" />
     <None Remove="Localization\" />
     <None Remove="Services\" />
-    <None Remove="Styles\" />
     <None Remove="Utils\ServiceLocator\" />
     <None Remove="Utils\Extensions\" />
     <None Remove="Services\Api\" />
@@ -60,6 +59,9 @@
     <None Remove="ViewModels\Home\" />
     <None Remove="ViewModels\Detail\" />
     <None Remove="Views\Detail\" />
+    <None Remove="Tools\Converters\" />
+    <None Remove="Renderers\" />
+    <None Remove="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -69,7 +71,6 @@
     <Folder Include="Tools\" />
     <Folder Include="Localization\" />
     <Folder Include="Services\" />
-    <Folder Include="Styles\" />
     <Folder Include="Utils\ServiceLocator\" />
     <Folder Include="Utils\Extensions\" />
     <Folder Include="Services\Api\" />
@@ -99,6 +100,9 @@
     <Folder Include="ViewModels\Home\" />
     <Folder Include="ViewModels\Detail\" />
     <Folder Include="Views\Detail\" />
+    <Folder Include="Tools\Converters\" />
+    <Folder Include="Renderers\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
