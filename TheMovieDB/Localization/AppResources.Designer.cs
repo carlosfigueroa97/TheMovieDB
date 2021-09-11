@@ -94,5 +94,23 @@ namespace TheMovieDB.Localization {
                 return ResourceManager.GetString("CommingSoon", resourceCulture);
             }
         }
+        
+        internal static string Studio {
+            get {
+                return ResourceManager.GetString("Studio", resourceCulture);
+            }
+        }
+        
+        internal static string Genre {
+            get {
+                return ResourceManager.GetString("Genre", resourceCulture);
+            }
+        }
+        
+        internal static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
+            }
+        }
     }
 }

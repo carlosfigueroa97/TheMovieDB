@@ -36,4 +36,13 @@
 	<data name="CommingSoon" xml:space="preserve">
 		<value>COMMING SOON</value>
 	</data>
+	<data name="Studio" xml:space="preserve">
+		<value>Studio</value>
+	</data>
+	<data name="Genre" xml:space="preserve">
+		<value>Genre</value>
+	</data>
+	<data name="Release" xml:space="preserve">
+		<value>Release</value>
+	</data>
 </root>

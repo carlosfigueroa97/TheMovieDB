@@ -2,8 +2,155 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="TheMovieDB.Views.Detail.MovieDetailPage">
+    xmlns:fn="clr-namespace:TheMovieDB.Tools.Helpers"
+    xmlns:controls="clr-namespace:TheMovieDB.Controls"
+    xmlns:local="clr-namespace:TheMovieDB.Localization"
+    x:Class="TheMovieDB.Views.Detail.MovieDetailPage"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        
+        <Grid>
+            <Grid
+                IsVisible="{Binding IsBusy,
+                            Converter={StaticResource InverseBoolConverter}}"
+                RowDefinitions="330, *">
+                <Frame
+                    Grid.Row="0"
+                    HasShadow="False"
+                    CornerRadius="20"
+                    BackgroundColor="Transparent"
+                    Padding="{StaticResource NoPadding}">
+                    <Image
+                        Aspect="Fill"
+                        Source="{Binding DetailMovie.Image}"/>
+                </Frame>
+                <ScrollView
+                    Grid.Row="1"
+                    Padding="{StaticResource NormalPadding}"
+                    VerticalScrollBarVisibility="Never">
+                    <StackLayout>
+                        <Grid
+                            RowDefinitions="Auto, Auto, 100, *"
+                            RowSpacing="20">
+                            <Grid
+                                Grid.Row="0"
+                                RowDefinitions="*, *"
+                                ColumnDefinitions="*, Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Style="{StaticResource TitleLabel}"
+                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding DetailMovie.DetailMovie.Title}"/>
+                                <controls:Rating
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    HorizontalOptions="EndAndExpand"
+                                    RatingStar="{Binding DetailMovie.DetailMovie.VoteAverage}"/>
+                            </Grid>
+                            <Label
+                                Grid.Row="1"
+                                Style="{StaticResource GrayNormalLabel}"
+                                Text="{Binding DetailMovie.DetailMovie.Overview}"/>
+                            <CollectionView
+                                Grid.Row="2"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding CastList}"
+                                SelectionMode="None"
+                                HorizontalScrollBarVisibility="Never">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Padding="10">
+                                            <Image
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                WidthRequest="40"
+                                                HeightRequest="55"
+                                                Aspect="Fill"
+                                                Source="{Binding Image}"/>
+                                            <Label
+                                                Style="{StaticResource GrayNormalLabel}"
+                                                MaxLines="2"
+                                                Text="{Binding Cast.Name}"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Grid
+                                Grid.Row="3"
+                                RowDefinitions="Auto, Auto, Auto">
+                                <Label
+                                    Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Style="{StaticResource WhiteNormalLabel}"
+                                                Text="{Static local:AppResources.Studio}"/>
+                                            <Span
+                                                Text=" "/>
+                                            <Span
+                                                Style="{StaticResource GrayNormalLabel}"
+                                                Text="{Binding DetailMovie.Studio}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Row="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Style="{StaticResource WhiteNormalLabel}"
+                                                Text="{Static local:AppResources.Genre}"/>
+                                            <Span
+                                                Text=" "/>
+                                            <Span
+                                                Style="{StaticResource GrayNormalLabel}"
+                                                Text="{Binding DetailMovie.Genres}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Row="2">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Style="{StaticResource WhiteNormalLabel}"
+                                                Text="{Static local:AppResources.Release}"/>
+                                            <Span
+                                                Text=" "/>
+                                            <Span
+                                                Style="{StaticResource GrayNormalLabel}"
+                                                Text="{Binding DetailMovie.ReleaseYear}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <Label
+                Style="{StaticResource WhiteFontAwesomeFreeSolid}"
+                VerticalOptions="Start"
+                Text="{Static fn:Icons.BackArrowIcon}">
+                <Label.Margin>
+                    <OnPlatform
+                        x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="{StaticResource AndroidSafeArea}"/>
+                        <On Platform="iOS" Value="{StaticResource iOSSafeArea}"/>
+                    </OnPlatform>
+                </Label.Margin>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoBackCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <ActivityIndicator
+                Style="{StaticResource BaseActivityIndicator}"
+                IsVisible="{Binding IsBusy}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

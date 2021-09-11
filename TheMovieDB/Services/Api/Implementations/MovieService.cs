@@ -64,6 +64,69 @@ namespace TheMovieDB.Services.Api.Implementations
             }
         }
 
+        public async Task<CreditsMovie> GetCreditsMovieAsync(long idMovie, Params movieParams = null, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.DetailMovie}{idMovie}/credits?api_key={ConstantsGlobal.ApiKey}&" +
+                    $"language={movieParams?.Language}", cancellationToken);
+
+                if (response is null)
+                {
+                    return null;
+                }
+
+                var json = JsonConvert.DeserializeObject<CreditsMovie>(response);
+                return json;
+            }
+            catch (NoInternetConnectionException ex)
+            {
+                _crashReporting.TrackNoInternetConnection(ex);
+                throw ex;
+            }
+            catch (ApiErrorException ex)
+            {
+                _crashReporting.TrackApiError(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+                throw ex;
+            }
+        }
+
+        public async Task<DetailMovie> GetDetailMovieAsync(long idMovie, Params movieParams = null, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var response = await _apiClient.GetAsync($"{ConstantsGlobal.DetailMovie}{idMovie}?api_key={ConstantsGlobal.ApiKey}&" +
+                    $"language={movieParams?.Language}", cancellationToken);
+
+                if (response is null)
+                {
+                    return null;
+                }
+
+                return JsonConvert.DeserializeObject<DetailMovie>(response);
+            }
+            catch (NoInternetConnectionException ex)
+            {
+                _crashReporting.TrackNoInternetConnection(ex);
+                throw ex;
+            }
+            catch (ApiErrorException ex)
+            {
+                _crashReporting.TrackApiError(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+                throw ex;
+            }
+        }
+
         public async Task<Popular> GetPopularMoviesAsync(Params movieParams = null, CancellationToken cancellationToken = default)
         {
             try

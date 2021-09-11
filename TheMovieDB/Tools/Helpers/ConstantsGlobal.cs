@@ -10,5 +10,6 @@
         public const string UpCommingUrl = ApiUrl + "movie/upcoming?";
         public const string PopularUrl = ApiUrl + "movie/popular?";
         public const string ConfigurationUrl = ApiUrl + "configuration?";
+        public const string DetailMovie = ApiUrl + "movie/";
     }
 }
