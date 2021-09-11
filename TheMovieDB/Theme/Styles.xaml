@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TheMovieDB.Theme.Styles">
+    <!-- Activity Indicator -->
+    <Style
+        TargetType="ActivityIndicator"
+        x:Key="BaseActivityIndicator">
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="Color" Value="{StaticResource WhiteTextColor}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="IsRunning" Value="True"/>
+        <Setter Property="InputTransparent" Value="True"/>
+    </Style>
+
+    <!-- Labels -->
+    <Style 
+        TargetType="Label"
+        x:Key="TitleLabel">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBlackFont}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource LongSize}"/>
+        <Setter Property="TextColor" Value="{StaticResource WhiteTextColor}"/>
+    </Style>
+
+    <Style 
+        TargetType="Label"
+        x:Key="SubtitleLabel">
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource MediumSize}"/>
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}"/>
+    </Style>
+
+    <Style 
+        TargetType="Label"
+        x:Key="TitleMovieLabel">
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}"/>
+    </Style>
+
+    <Style 
+        TargetType="Label"
+        x:Key="GrayNormalLabel">
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="TextColor" Value="{StaticResource GrayTextColor}"/>
+    </Style>
+
+    <Style 
+        TargetType="Label"
+        x:Key="WhiteNormalLabel">
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="TextColor" Value="{StaticResource WhiteTextColor}"/>
+    </Style>
+
+    <!-- FontAwesome -->
+    <Style
+        TargetType="Label"
+        x:Key="WhiteFontAwesomeFreeSolid">
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFreeSolid}"/>
+        <Setter Property="TextColor" Value="{StaticResource WhiteTextColor}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource LongSize}"/>
+    </Style>
+</ResourceDictionary>

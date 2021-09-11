@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TheMovieDB.Theme.Colors">
+    <!-- Background -->
+    <Color x:Key="PrimaryBackgroundColor">#47A4D7</Color>
+    <Color x:Key="SecondBackgroundColor">#253648</Color>
+    <Color x:Key="SearchBarBackgroundColor">#84C0E4</Color>
+
+    <!-- Text -->
+    <Color x:Key="WhiteTextColor">#F5FAFC</Color>
+    <Color x:Key="LightGrayTextColor">#CBCFD2</Color>
+    <Color x:Key="GrayTextColor">#AFB5BB</Color>
+
+    <!-- Icons -->
+    <Color x:Key="RaitingColor">#FFD300</Color>
+    <Color x:Key="GeneralColor">#5AB7CF</Color>
+</ResourceDictionary>

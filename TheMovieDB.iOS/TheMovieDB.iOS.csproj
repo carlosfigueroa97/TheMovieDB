@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -132,5 +132,14 @@
       <Project>{6BAA77BD-A52B-4B36-93CC-034A4124AA45}</Project>
       <Name>TheMovieDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Font Awesome 5 Brands-Regular-400.otf" />
+    <BundleResource Include="Resources\Font Awesome 5 Free-Regular-400.otf" />
+    <BundleResource Include="Resources\Font Awesome 5 Free-Solid-900.otf" />
+    <BundleResource Include="Resources\Raleway-Black.ttf" />
+    <BundleResource Include="Resources\Raleway-Bold.ttf" />
+    <BundleResource Include="Resources\Raleway-Regular.ttf" />
+    <BundleResource Include="Resources\Raleway-SemiBold.ttf" />
   </ItemGroup>
 </Project>
