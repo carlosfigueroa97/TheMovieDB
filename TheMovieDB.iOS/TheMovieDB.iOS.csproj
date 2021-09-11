@@ -68,6 +68,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\IOSSearchBarRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -141,5 +142,8 @@
     <BundleResource Include="Resources\Raleway-Bold.ttf" />
     <BundleResource Include="Resources\Raleway-Regular.ttf" />
     <BundleResource Include="Resources\Raleway-SemiBold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
