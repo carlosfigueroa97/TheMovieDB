@@ -18,7 +18,7 @@ namespace TheMovieDB.Utils.ServiceLocator
 
         public static IServiceLocator GetAutofacServiceLocator()
         {
-            return AutofacServiceLocator.Instace;
+            return AutofacServiceLocator.Instance;
         }
 
         public IServiceLocator Current

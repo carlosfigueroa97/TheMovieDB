@@ -12,7 +12,7 @@ namespace TheMovieDB.Utils.ServiceLocator
         private ContainerBuilder ContainerBuilder { get; set; }
 
         private static AutofacServiceLocator _instance;
-        private static AutofacServiceLocator Instance => _instance ?? (_instance = new AutofacServiceLocator());
+        public static AutofacServiceLocator Instance => _instance ?? (_instance = new AutofacServiceLocator());
 
         #endregion
 
