@@ -5,6 +5,7 @@
     xmlns:controls="clr-namespace:TheMovieDB.Controls"
     xmlns:local="clr-namespace:TheMovieDB.Localization"
     xmlns:items="clr-namespace:TheMovieDB.Items"
+    xmlns:renderers="clr-namespace:TheMovieDB.Renderers"
     x:Class="TheMovieDB.Views.Home.MovieListPage"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -29,10 +30,10 @@
                     ReturnCommand="{Binding SearchCommand}"
                     ReturnCommandParameter="{Binding .}"/>
             </Grid>
-            <Frame
+            <renderers:CustomFrameRenderer
                 Grid.Row="1"
                 HasShadow="False"
-                CornerRadius="20"
+                CornerRadius="20,20,0,0"
                 BackgroundColor="{StaticResource SecondBackgroundColor}"
                 Padding="{StaticResource NormalPadding}">
                 <Grid>
@@ -112,7 +113,7 @@
                         Style="{StaticResource BaseActivityIndicator}"
                         IsVisible="{Binding IsBusy}"/>
                 </Grid>
-            </Frame>
+            </renderers:CustomFrameRenderer>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

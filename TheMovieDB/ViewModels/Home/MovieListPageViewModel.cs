@@ -107,29 +107,39 @@ namespace TheMovieDB.ViewModels.Home
             {
                 if(searchText.Length > 2)
                 {
-                    var topRatedFiltered = TopRatedListCopy
+                    if ((bool)(TopRatedListCopy?.Any()))
+                    {
+                        var topRatedFiltered = TopRatedListCopy
                                                 .Where(x =>
                                                         x.Result.Title
                                                         .ToLower()
                                                         .Contains(searchText.ToLower()))
                                                 .ToList();
-                    TopRatedList = new ObservableCollection<ResultWrapper>(topRatedFiltered);
+                        TopRatedList = new ObservableCollection<ResultWrapper>(topRatedFiltered);
+                    }
 
-                    var upCommingFiltered = UpCommingListCopy
+                    if ((bool)(UpCommingListCopy?.Any()))
+                    {
+                        var upCommingFiltered = UpCommingListCopy
                                                 .Where(x =>
                                                         x.Result.Title
                                                         .ToLower()
                                                         .Contains(searchText.ToLower()))
                                                 .ToList();
-                    UpCommingList = new ObservableCollection<ResultWrapper>(upCommingFiltered);
+                        UpCommingList = new ObservableCollection<ResultWrapper>(upCommingFiltered);
+                    }
 
-                    var popularFiltered = PopularListCopy
+
+                    if ((bool)(PopularListCopy?.Any()))
+                    {
+                        var popularFiltered = PopularListCopy
                                                 .Where(x =>
                                                         x.Result.Title
                                                         .ToLower()
                                                         .Contains(searchText.ToLower()))
                                                 .ToList();
-                    PopularList = new ObservableCollection<ResultWrapper>(popularFiltered);
+                        PopularList = new ObservableCollection<ResultWrapper>(popularFiltered);
+                    }
                 }
             }
 
@@ -228,7 +238,7 @@ namespace TheMovieDB.ViewModels.Home
 
             if(response != null)
             {
-                var baseUrl = response.Images.BaseUrl;
+                var baseUrl = response.Images.SecureBaseUrl;
                 var size = response.Images.BackdropSizes.First(x => x == "original");
                 return $"{baseUrl}{size}";
             }

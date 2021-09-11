@@ -10,12 +10,12 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Center"
         HeightRequest="{StaticResource FrameHeightRequest}"
-        CornerRadius="20"
+        CornerRadius="30"
         HasShadow="False"
-        Padding="{StaticResource SmallPadding}"
+        Padding="{StaticResource NoPadding}"
         BackgroundColor="{StaticResource SearchBarBackgroundColor}">
         <Grid
-            ColumnDefinitions="20, *">
+            ColumnDefinitions="Auto, *">
             <Label
                 Grid.Column="0"
                 HorizontalOptions="Start"
@@ -23,12 +23,13 @@
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="Center"
                 Style="{StaticResource WhiteFontAwesomeFreeSolid}"
-                Text="{Static fn:Icons.SearchIcon}"/>
+                Text="{Static fn:Icons.SearchIcon}"
+                Margin="{StaticResource SmallPadding}"/>
             <renderers:EntryRenderer
                 x:Name="search"
                 Grid.Column="1"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="Center"
+                VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center"
                 ReturnType="Search"
                 Keyboard="Text"

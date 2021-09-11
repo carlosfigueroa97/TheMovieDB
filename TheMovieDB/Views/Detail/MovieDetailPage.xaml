@@ -5,6 +5,7 @@
     xmlns:fn="clr-namespace:TheMovieDB.Tools.Helpers"
     xmlns:controls="clr-namespace:TheMovieDB.Controls"
     xmlns:local="clr-namespace:TheMovieDB.Localization"
+    xmlns:renderers="clr-namespace:TheMovieDB.Renderers"
     x:Class="TheMovieDB.Views.Detail.MovieDetailPage"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -13,17 +14,17 @@
                 IsVisible="{Binding IsBusy,
                             Converter={StaticResource InverseBoolConverter}}"
                 RowDefinitions="330, *">
-                <Frame
+                <renderers:CustomFrameRenderer
                     Grid.Row="0"
                     HasShadow="False"
-                    CornerRadius="20"
+                    CornerRadius="0,0,20,20"
+                    IsClippedToBounds="True"
                     BackgroundColor="Transparent"
-                    Padding="{StaticResource NoPadding}"
-                    IsClippedToBounds="True">
+                    Padding="{StaticResource NoPadding}">
                     <Image
                         Aspect="Fill"
                         Source="{Binding DetailMovie.Image}"/>
-                </Frame>
+                </renderers:CustomFrameRenderer>
                 <ScrollView
                     Grid.Row="1"
                     Padding="{StaticResource NormalPadding}"

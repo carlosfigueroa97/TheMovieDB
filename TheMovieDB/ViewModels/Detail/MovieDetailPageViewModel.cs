@@ -183,7 +183,7 @@ namespace TheMovieDB.ViewModels.Detail
 
             if (response != null)
             {
-                var baseUrl = response.Images.BaseUrl;
+                var baseUrl = response.Images.SecureBaseUrl;
                 var size = response.Images.BackdropSizes.First(x => x == "w300");
                 return $"{baseUrl}{size}";
             }
