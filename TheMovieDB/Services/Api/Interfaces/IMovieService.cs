@@ -14,5 +14,9 @@ namespace TheMovieDB.Services.Api.Interfaces
         Task<Popular> GetPopularMoviesAsync(Params movieParams = null, CancellationToken cancellationToken = default);
 
         Task<Configuration> GetConfigurationMoviesAsync(CancellationToken cancellationToken = default);
+
+        Task<DetailMovie> GetDetailMovieAsync(long idmovie, Params movieParams = null, CancellationToken cancellationToken = default);
+
+        Task<CreditsMovie> GetCreditsMovieAsync(long idmovie, Params movieParams = null, CancellationToken cancellationToken = default);
     }
 }

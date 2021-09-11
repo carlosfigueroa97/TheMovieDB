@@ -89,7 +89,7 @@ namespace TheMovieDB.Services.Navigation.Implementations
         public async Task NavigateTo<TVM>() where TVM : BaseVm
         {
             Page view = CreatePageAndBind(typeof(TVM));
-            view.BackgroundColor = Colors.PrimaryBackgroundColor;
+            view.BackgroundColor = Colors.SecondBackgroundColor;
             var vm = view.BindingContext as BaseVm;
             await vm.Init();
 
@@ -99,7 +99,7 @@ namespace TheMovieDB.Services.Navigation.Implementations
         public async Task NavigateTo<TVM, TInitParameter>(TInitParameter parameter) where TVM : BaseViewModel<TInitParameter>
         {
             Page view = CreatePageAndBind(typeof(TVM));
-            view.BackgroundColor = Colors.PrimaryBackgroundColor;
+            view.BackgroundColor = Colors.SecondBackgroundColor;
             var vm = view.BindingContext as BaseViewModel<TInitParameter>;
             await vm.Init(parameter);
 

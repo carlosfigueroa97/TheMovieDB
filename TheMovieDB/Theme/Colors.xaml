@@ -14,6 +14,6 @@
     <Color x:Key="GrayTextColor">#AFB5BB</Color>
 
     <!-- Icons -->
-    <Color x:Key="RaitingColor">#FFD300</Color>
+    <Color x:Key="RatingColor">#FFD300</Color>
     <Color x:Key="GeneralColor">#5AB7CF</Color>
 </ResourceDictionary>

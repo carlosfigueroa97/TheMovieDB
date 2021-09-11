@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resultWrapper="clr-namespace:TheMovieDB.Models.App"
+    xmlns:controls="clr-namespace:TheMovieDB.Controls"
+    x:DataType="resultWrapper:ResultWrapper"
+    x:Class="TheMovieDB.Items.ItemMovieCollectionView">
+    <ContentView.Content>
+        <Grid
+            RowDefinitions="*, 20, 20"
+            Padding="{StaticResource SmallPadding}"
+            WidthRequest="{StaticResource GridWidthRequest}">
+            <Grid
+                Grid.Row="0">
+                <Frame
+                    CornerRadius="20"
+                    HasShadow="False"
+                    Padding="{StaticResource NoPadding}"
+                    IsClippedToBounds="True">
+                    <Image
+                        Aspect="Fill"
+                        Source="{Binding Image}"/>
+                </Frame>
+            </Grid>            
+            <Label
+                Grid.Row="1"
+                Style="{StaticResource TitleMovieLabel}"
+                Text="{Binding Result.Title}"/>
+            <controls:Rating
+                Grid.Row="2"
+                RatingStar="{Binding Result.VoteAverage}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

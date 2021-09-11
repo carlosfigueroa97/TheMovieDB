@@ -58,5 +58,59 @@ namespace TheMovieDB.Localization {
                 return ResourceManager.GetString("UnexpectedExceptionOcurred", resourceCulture);
             }
         }
+        
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomeMessage {
+            get {
+                return ResourceManager.GetString("WelcomeMessage", resourceCulture);
+            }
+        }
+        
+        internal static string NoResultFound {
+            get {
+                return ResourceManager.GetString("NoResultFound", resourceCulture);
+            }
+        }
+        
+        internal static string RecommendedForYou {
+            get {
+                return ResourceManager.GetString("RecommendedForYou", resourceCulture);
+            }
+        }
+        
+        internal static string TopRated {
+            get {
+                return ResourceManager.GetString("TopRated", resourceCulture);
+            }
+        }
+        
+        internal static string CommingSoon {
+            get {
+                return ResourceManager.GetString("CommingSoon", resourceCulture);
+            }
+        }
+        
+        internal static string Studio {
+            get {
+                return ResourceManager.GetString("Studio", resourceCulture);
+            }
+        }
+        
+        internal static string Genre {
+            get {
+                return ResourceManager.GetString("Genre", resourceCulture);
+            }
+        }
+        
+        internal static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
+            }
+        }
     }
 }
