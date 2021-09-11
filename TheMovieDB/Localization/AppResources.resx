@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="NoInternetConnection" xml:space="preserve">
+		<value>You do not have an internet connection, please access a network</value>
+	</data>
+	<data name="UnexpectedExceptionOcurred" xml:space="preserve">
+		<value>An unexpected exception occurred</value>
+	</data>
+	<data name="Search" xml:space="preserve">
+		<value>Search</value>
+	</data>
+	<data name="WelcomeMessage" xml:space="preserve">
+		<value>Hello, what do you want to watch?</value>
+	</data>
+	<data name="NoResultFound" xml:space="preserve">
+		<value>No results found</value>
+	</data>
+	<data name="RecommendedForYou" xml:space="preserve">
+		<value>RECOMMENDED FOR YOU</value>
+	</data>
+	<data name="TopRated" xml:space="preserve">
+		<value>TOP RATED</value>
+	</data>
+	<data name="CommingSoon" xml:space="preserve">
+		<value>POPULAR</value>
+	</data>
+	<data name="Studio" xml:space="preserve">
+		<value>Studio</value>
+	</data>
+	<data name="Genre" xml:space="preserve">
+		<value>Genre</value>
+	</data>
+	<data name="Release" xml:space="preserve">
+		<value>Release</value>
+	</data>
+</root>

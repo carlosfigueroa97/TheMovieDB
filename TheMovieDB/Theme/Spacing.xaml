@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TheMovieDB.Theme.Spacing">
+    <Thickness x:Key="AndroidSafeArea">20,15</Thickness>
+    <Thickness x:Key="iOSSafeArea">20,50,20,0</Thickness>
+    <Thickness x:Key="AndroidTopSafeArea">0,15,0,0</Thickness>
+    <Thickness x:Key="iOSTopSafeArea">0,50,0,0</Thickness>
+
+    <!-- Custom -->
+    <Thickness x:Key="SmallPadding">10</Thickness>
+    <Thickness x:Key="NormalPadding">20</Thickness>
+    <Thickness x:Key="NoPadding">0</Thickness>
+    <Thickness x:Key="SmallTopPadding">10</Thickness>
+</ResourceDictionary>
