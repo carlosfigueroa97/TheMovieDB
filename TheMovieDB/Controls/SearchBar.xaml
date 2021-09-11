@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fn="clr-namespace:TheMovieDB.Tools.Helpers"
+    xmlns:renderers="clr-namespace:TheMovieDB.Renderers"
+    xmlns:local="clr-namespace:TheMovieDB.Localization"
+    x:Class="TheMovieDB.Controls.SearchBar">
+    <Frame
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center"
+        HeightRequest="{StaticResource FrameHeightRequest}"
+        CornerRadius="20"
+        HasShadow="False"
+        Padding="{StaticResource SmallPadding}"
+        BackgroundColor="{StaticResource SearchBarBackgroundColor}">
+        <Grid
+            ColumnDefinitions="20, *">
+            <Label
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Style="{StaticResource WhiteFontAwesomeFreeSolid}"
+                Text="{Static fn:Icons.SearchIcon}"/>
+            <renderers:EntryRenderer
+                x:Name="search"
+                Grid.Column="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                ReturnType="Search"
+                Keyboard="Text"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource LightGrayTextColor}"
+                Placeholder="{Static local:AppResources.Search}"
+                PlaceholderColor="{StaticResource LightGrayTextColor}"/>
+        </Grid>
+    </Frame>
+</ContentView>
