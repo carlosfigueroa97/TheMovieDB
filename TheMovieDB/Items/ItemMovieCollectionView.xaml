@@ -16,7 +16,8 @@
                 <Frame
                     CornerRadius="20"
                     HasShadow="False"
-                    Padding="{StaticResource NoPadding}">
+                    Padding="{StaticResource NoPadding}"
+                    IsClippedToBounds="True">
                     <Image
                         Aspect="Fill"
                         Source="{Binding Image}"/>

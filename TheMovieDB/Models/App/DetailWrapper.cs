@@ -1,5 +1,4 @@
-﻿using System;
-using TheMovieDB.Models.Api.Responses;
+﻿using TheMovieDB.Models.Api.Responses;
 
 namespace TheMovieDB.Models.App
 {

@@ -18,7 +18,8 @@
                     HasShadow="False"
                     CornerRadius="20"
                     BackgroundColor="Transparent"
-                    Padding="{StaticResource NoPadding}">
+                    Padding="{StaticResource NoPadding}"
+                    IsClippedToBounds="True">
                     <Image
                         Aspect="Fill"
                         Source="{Binding DetailMovie.Image}"/>
@@ -29,7 +30,7 @@
                     VerticalScrollBarVisibility="Never">
                     <StackLayout>
                         <Grid
-                            RowDefinitions="Auto, Auto, 100, *"
+                            RowDefinitions="Auto, Auto, 120, *"
                             RowSpacing="20">
                             <Grid
                                 Grid.Row="0"
@@ -64,13 +65,21 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Padding="10">
-                                            <Image
+                                            <Frame
+                                                HasShadow="False"
+                                                CornerRadius="37"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
-                                                WidthRequest="40"
-                                                HeightRequest="55"
-                                                Aspect="Fill"
-                                                Source="{Binding Image}"/>
+                                                HeightRequest="70"
+                                                WidthRequest="75"
+                                                BackgroundColor="Transparent"
+                                                Padding="0"
+                                                Margin="0"
+                                                IsClippedToBounds="True">
+                                                <Image
+                                                    Aspect="Fill"
+                                                    Source="{Binding Image}"/>
+                                            </Frame>
                                             <Label
                                                 Style="{StaticResource GrayNormalLabel}"
                                                 MaxLines="2"
@@ -90,7 +99,7 @@
                                                 Style="{StaticResource WhiteNormalLabel}"
                                                 Text="{Static local:AppResources.Studio}"/>
                                             <Span
-                                                Text=" "/>
+                                                Text="  "/>
                                             <Span
                                                 Style="{StaticResource GrayNormalLabel}"
                                                 Text="{Binding DetailMovie.Studio}"/>
@@ -105,7 +114,7 @@
                                                 Style="{StaticResource WhiteNormalLabel}"
                                                 Text="{Static local:AppResources.Genre}"/>
                                             <Span
-                                                Text=" "/>
+                                                Text="  "/>
                                             <Span
                                                 Style="{StaticResource GrayNormalLabel}"
                                                 Text="{Binding DetailMovie.Genres}"/>
@@ -120,7 +129,7 @@
                                                 Style="{StaticResource WhiteNormalLabel}"
                                                 Text="{Static local:AppResources.Release}"/>
                                             <Span
-                                                Text=" "/>
+                                                Text="  "/>
                                             <Span
                                                 Style="{StaticResource GrayNormalLabel}"
                                                 Text="{Binding DetailMovie.ReleaseYear}"/>

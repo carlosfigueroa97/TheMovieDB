@@ -184,7 +184,7 @@ namespace TheMovieDB.ViewModels.Detail
             if (response != null)
             {
                 var baseUrl = response.Images.BaseUrl;
-                var size = response.Images.BackdropSizes.First(x => x == "original");
+                var size = response.Images.BackdropSizes.First(x => x == "w300");
                 return $"{baseUrl}{size}";
             }
 
